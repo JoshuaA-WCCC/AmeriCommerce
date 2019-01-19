@@ -1,5 +1,5 @@
 //modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
-//Version 1.0.3 (1-19-2019) 
+//Version 1.0.4 (1-19-2019) 
 
 /**********************************************************************************/
 // USAGE:
@@ -123,12 +123,14 @@ if(type=='id'){
 const inputElement = document.getElementById(id);
 inputElement.addEventListener('keydown',enforceFormat);
 inputElement.addEventListener('keyup',formatToPhone);
+inputElement.addEventListener('input',formatToPhone);
 }
 else if(type=='class'){
 const classname = document.getElementsByClassName(id);
 	for (var i = 0; i < classname.length; i++) {
 	classname[i].addEventListener('keydown',enforceFormat);
 	classname[i].addEventListener('keyup',formatToPhone);
+	classname[i].addEventListener('input',formatToPhone);
 	}
 }
 
