@@ -1,15 +1,15 @@
 //modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
-//Version 1.0.1 (1-18-2019)
+//Version 1.0.2 (1-18-2019)
 
 /**********************************************************************************/
 // USAGE:
-// if you just have one or more elements, you can attach it by the id of the input fields
+// if you have one or more elements, you can attach it by the id of each input fields
 // formatPhoneNumber('phone_number_field_id');
 //
 // if you are adding this to an onclick event directly on the input field
 // formatPhoneNumber(this.id);
 //
-// if you just to use this on all elements with a specific css class 
+// if you want to use this on all elements with a specific css class 
 // formatPhoneNumber('phone_number_field_class','class');
 //
 /**********************************************************************************/
@@ -75,7 +75,8 @@ const enforceFormat = (event) => {
 const formatToPhone = (event) => {
 	if(isModifierKey(event)) {return;}
 	var val = event.target.value;
-	if(val.replace(/\D/g,'').length==9 ||val.replace(/\D/g,'').length==10 ||(val.replace(/\D/g,'').length==11 && val.replace(/\D/g,'').substring(0,1)==1)){ //if number matches US/Canada number format
+	var val_strip_ext = val.split("x")[0];
+	if(val_strip_ext.replace(/\D/g,'').length==9 ||val_strip_ext.replace(/\D/g,'').length==10 ||(val_strip_ext.replace(/\D/g,'').length==11 && val.replace(/\D/g,'').substring(0,1)==1)){ //if number matches US/Canada number format
 	
 	
 	if(val.slice(-1)==" " || val.slice(-1)=="x") return;
