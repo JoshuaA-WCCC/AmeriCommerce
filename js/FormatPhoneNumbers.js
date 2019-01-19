@@ -76,6 +76,7 @@ const formatToPhone = (event) => {
 	if(isModifierKey(event)) {return;}
 	var val = event.target.value;
 	var val_strip_ext = val.split("x")[0];
+	console.log("Before X: "+val_strip_ext+ " After X: "+val.split("x")[1]);
 	if(val_strip_ext.replace(/\D/g,'').length==9 ||val_strip_ext.replace(/\D/g,'').length==10 ||(val_strip_ext.replace(/\D/g,'').length==11 && val.replace(/\D/g,'').substring(0,1)==1)){ //if number matches US/Canada number format
 	
 	
