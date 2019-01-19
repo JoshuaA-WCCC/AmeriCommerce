@@ -81,7 +81,9 @@ const formatToPhone = (event) => {
 	if(val_strip_ext.replace(/\D/g,'').length==9 ||val_strip_ext.replace(/\D/g,'').length==10 ||(val_strip_ext.replace(/\D/g,'').length==11 && val.replace(/\D/g,'').substring(0,1)==1)){ //if number matches US/Canada number format
 	console.log("US/Canada Format Detected");
 	
-	if(val.slice(-1)==" " || val.indexOf("x")) {return;}
+	if(val.slice(-1)==" " || val.indexOf("x")) {
+		console.log("Space or X Detected");
+		return;}
 	if(val.replace(/\D/g,'').substring(0,1)==0){
 		val = val.substr(1);
 	}
