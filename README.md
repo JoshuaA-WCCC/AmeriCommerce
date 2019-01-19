@@ -1,5 +1,5 @@
 # AmeriCommerce
-Shared Scripts for AmeriCommerce Store Owners
+Shared Scripts for AmeriCommerce Store Owners (http://AmeriCommerce.com)
 
 These are scripts that I have written for use on our AmeriCommerce store and have shared with other store owners so they can benefit from them on thier stores as well.
 
