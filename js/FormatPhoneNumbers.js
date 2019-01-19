@@ -1,5 +1,5 @@
 //modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
-//Version 1.01 (1-18-2019)
+//Version 1.0.1 (1-18-2019)
 
 /**********************************************************************************/
 // USAGE:
