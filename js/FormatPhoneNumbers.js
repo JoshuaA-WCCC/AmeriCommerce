@@ -1,5 +1,5 @@
 //modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
-//Version 1.0 (1-15-2019)
+//Version 1.01 (1-18-2019)
 
 /**********************************************************************************/
 // USAGE:
@@ -12,6 +12,14 @@
 // if you just to use this on all elements with a specific css class 
 // formatPhoneNumber('phone_number_field_class','class');
 //
+/**********************************************************************************/
+
+/**********************************************************************************/
+//  Phone Number Formats:
+// 9 digit or fewer numbers: Not formatted
+// 10 digit numbers: (123) 465 - 7890
+// 11 digit numbers that start with a 1: 1 (123) 465 - 7890
+// 11+ digit numbers that do not start with a 1: +66 (123) 465 - 7890
 /**********************************************************************************/
 
 /**********************************************************************************/
@@ -86,7 +94,7 @@ const formatToPhone = (event) => {
 	
 	}
 	else if(val.substring(0,1)=='+'||val.replace(/\D/g,'').length>10){
-		var val = event.target.value;
+
 	if(val.slice(-1)==" " || val.slice(-1)=="x") return;
 
 	const target = event.target;
