@@ -1,5 +1,5 @@
 //modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
-//Version 1.0.2 (1-18-2019) 
+//Version 1.0.3 (1-19-2019) 
 
 /**********************************************************************************/
 // USAGE:
@@ -20,6 +20,11 @@
 // 10 digit numbers: (123) 465 - 7890
 // 11 digit numbers that start with a 1: 1 (123) 465 - 7890
 // 11+ digit numbers that do not start with a 1: +66 (123) 465 - 7890
+// 
+// Examples when extension is entered after the phone number: 
+// (123) 465 - 7890 x 1234
+// 1 (123) 465 - 7890 x 1234
+// +66 (123) 465 - 7890 x 1234
 /**********************************************************************************/
 
 /**********************************************************************************/
@@ -87,12 +92,10 @@ const formatToPhone = (event) => {
 		return;}
 	
 	if(val_strip_ext.replace(/\D/g,'').length==9 ||val_strip_ext.replace(/\D/g,'').length==10 ||(val_strip_ext.replace(/\D/g,'').length==11 && val.replace(/\D/g,'').substring(0,1)==1)){ //if number matches US/Canada number format
-	console.log("US/Canada Format Detected");
 	
 	if(val.replace(/\D/g,'').substring(0,1)==0){
 		val = val.substr(1);
 	}
-
 	
 	const input = val.replace(/\D/g,'').substring(0,11); // First 11 digits of input only
 	const zip = input.slice(-10).substring(0,3);
@@ -104,7 +107,6 @@ const formatToPhone = (event) => {
 	
 	}
 	else if(val.substring(0,1)=='+'||val.replace(/\D/g,'').length>10){
-	console.log("International Format Detected");
 
 	const input = val.replace(/\D/g,''); 
 	const country_digits=input.length-10;
@@ -117,31 +119,22 @@ const formatToPhone = (event) => {
 	}
 };
 
-
 if(type=='id'){
 const inputElement = document.getElementById(id);
 inputElement.addEventListener('keydown',enforceFormat);
 inputElement.addEventListener('keyup',formatToPhone);
-
-
-
 }
 else if(type=='class'){
 const classname = document.getElementsByClassName(id);
-
 	for (var i = 0; i < classname.length; i++) {
 	classname[i].addEventListener('keydown',enforceFormat);
 	classname[i].addEventListener('keyup',formatToPhone);
 	}
 }
 
-
-
 } //end function
 
-
 formatPhoneNumber('AddressEditorPhoneTextbox','class');  
-
 
 //if any of the divs on the page are modified fire formatPhoneNumber to add the formatter to new phone number fields
 var element = document.getElementsByClassName('LayoutContentInner')[0];
@@ -156,6 +149,3 @@ var element = document.getElementsByClassName('LayoutContentInner')[0];
     characterData: true,
     subtree: true
   });
-
-
-
