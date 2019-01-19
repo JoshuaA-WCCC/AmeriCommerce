@@ -96,7 +96,7 @@ const formatToPhone = (event) => {
 	}
 	else if(val.substring(0,1)=='+'||val.replace(/\D/g,'').length>10){
 
-	if(val.slice(-1)==" " || valval.indexOf("x")) return;
+	if(val.slice(-1)==" " || val.indexOf("x")) return;
 
 	const target = event.target;
 	const input = val.replace(/\D/g,''); 
