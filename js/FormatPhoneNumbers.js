@@ -1,5 +1,5 @@
 //modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
-//Version 1.0.2 (1-18-2019)
+//Version 1.0.2 (1-18-2019) 
 
 /**********************************************************************************/
 // USAGE:
@@ -96,7 +96,7 @@ const formatToPhone = (event) => {
 	}
 	else if(val.substring(0,1)=='+'||val.replace(/\D/g,'').length>10){
 
-	if(val.slice(-1)==" " || valval.indexOf("x")) return;
+	if(val.slice(-1)==" " || val.indexOf("x")) return;
 
 	const target = event.target;
 	const input = val.replace(/\D/g,''); 
