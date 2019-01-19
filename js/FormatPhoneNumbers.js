@@ -82,7 +82,7 @@ const formatToPhone = (event) => {
 	console.log("US/Canada Format Detected");
 	
 	if(val.slice(-1)==" " || val.indexOf("x")) {
-		console.log("Space or X Detected");
+		console.log("Space or X Detected in '"+val+"'");
 		return;}
 	if(val.replace(/\D/g,'').substring(0,1)==0){
 		val = val.substr(1);
