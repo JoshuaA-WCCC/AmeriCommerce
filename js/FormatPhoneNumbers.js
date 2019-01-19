@@ -142,7 +142,6 @@ formatPhoneNumber('AddressEditorPhoneTextbox','class');
 var element = document.getElementsByClassName('LayoutContentInner')[0];
 
   var observer = new MutationObserver(function (mutations, observer) {
-	  console.log(mutations);
     formatPhoneNumber('AddressEditorPhoneTextbox','class');
   });
   observer.observe(element, {
