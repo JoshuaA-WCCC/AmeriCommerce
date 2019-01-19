@@ -76,12 +76,11 @@ const formatToPhone = (event) => {
 	if(isModifierKey(event)) {return;}
 	var val = event.target.value;
 	var val_strip_ext = val.split("x")[0];
-	console.log("Before X: "+val_strip_ext+ " After X: "+val.split("x")[1]);
 	
 	if(val_strip_ext.replace(/\D/g,'').length==9 ||val_strip_ext.replace(/\D/g,'').length==10 ||(val_strip_ext.replace(/\D/g,'').length==11 && val.replace(/\D/g,'').substring(0,1)==1)){ //if number matches US/Canada number format
 	console.log("US/Canada Format Detected");
 	
-	if(val.slice(-1)==" " || val.indexOf("x")) {
+	if(val.slice(-1)==" " || val.indexOf("x")>0) {
 		console.log("Space or X Detected in '"+val+"'");
 		return;}
 	if(val.replace(/\D/g,'').substring(0,1)==0){
@@ -101,7 +100,7 @@ const formatToPhone = (event) => {
 	else if(val.substring(0,1)=='+'||val.replace(/\D/g,'').length>10){
 	console.log("International Format Detected");
 		
-	if(val.slice(-1)==" " || val.indexOf("x")) {return;}
+	if(val.slice(-1)==" " || val.indexOf("x")>0) {return;}
 
 	const target = event.target;
 	const input = val.replace(/\D/g,''); 
