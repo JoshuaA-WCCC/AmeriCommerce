@@ -133,10 +133,12 @@ const classname = document.getElementsByClassName(id);
 	classname[i].addEventListener('keyup',formatToPhone);
 	classname[i].addEventListener('input',formatToPhone);
 	classname[i].addEventListener('load',formatToPhone);
-	 //check for prefilled data on load}
-	document.addEventListener('load',formatToPhone); //check for prefilled data on load
+	 }
 }
 
+	window.addEventListener('load',formatToPhone); //check for prefilled data on load
+}
+	
 } //end function
 
 formatPhoneNumber('AddressEditorPhoneTextbox','class');  
