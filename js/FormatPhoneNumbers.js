@@ -135,12 +135,10 @@ const classname = document.getElementsByClassName(id);
 	classname[i].addEventListener('load',formatToPhone);
 	 }
 }
-
-	window.addEventListener('load',formatToPhone); //check for prefilled data on load
 	
 } //end function
 
-formatPhoneNumber('AddressEditorPhoneTextbox','class');  
+	window.addEventListener('DOMContentLoaded',formatPhoneNumber('AddressEditorPhoneTextbox','class')); //check for prefilled data on load 
 
 //if any of the divs on the page are modified fire formatPhoneNumber to add the formatter to new phone number fields
 var element = document.getElementsByClassName('LayoutContentInner')[0];
