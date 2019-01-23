@@ -79,7 +79,7 @@ const enforceFormat = (event) => {
 
 const formatToPhone = (event) => {
 	if(isModifierKey(event)) {return;}
-	
+	console.log('PhoneNumber Format Triggered');
 	const target = event.target;
 	const val = event.target.value;
 	const val_strip_ext = val.split("x")[0];
