@@ -137,7 +137,6 @@ const classname = document.getElementsByClassName(id);
 }
 
 	window.addEventListener('load',formatToPhone); //check for prefilled data on load
-}
 	
 } //end function
 
