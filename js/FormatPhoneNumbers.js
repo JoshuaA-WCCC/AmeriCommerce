@@ -124,7 +124,7 @@ const inputElement = document.getElementById(id);
 inputElement.addEventListener('keydown',enforceFormat);
 inputElement.addEventListener('keyup',formatToPhone);
 inputElement.addEventListener('input',formatToPhone);
-inputElement.addEventListener('load',formatToPhone);
+
 }
 else if(type=='class'){
 const classname = document.getElementsByClassName(id);
@@ -133,7 +133,8 @@ const classname = document.getElementsByClassName(id);
 	classname[i].addEventListener('keyup',formatToPhone);
 	classname[i].addEventListener('input',formatToPhone);
 	classname[i].addEventListener('load',formatToPhone);
-	}
+	 //check for prefilled data on load}
+	document.addEventListener('load',formatToPhone); //check for prefilled data on load
 }
 
 } //end function
