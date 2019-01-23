@@ -138,7 +138,7 @@ const classname = document.getElementsByClassName(id);
 	
 } //end function
 
-	window.addEventListener('DOMContentLoaded',formatPhoneNumber('AddressEditorPhoneTextbox','class')); //check for prefilled data on load 
+formatPhoneNumber('AddressEditorPhoneTextbox','class'); 
 
 //if any of the divs on the page are modified fire formatPhoneNumber to add the formatter to new phone number fields
 var element = document.getElementsByClassName('LayoutContentInner')[0];
@@ -147,8 +147,8 @@ var element = document.getElementsByClassName('LayoutContentInner')[0];
     formatPhoneNumber('AddressEditorPhoneTextbox','class');
   });
   observer.observe(element, {
-	  attributes: true,
+	//  attributes: true,
     childList: true,
-    characterData: true,
+  //  characterData: true,
     subtree: true
   });
