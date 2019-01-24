@@ -61,7 +61,8 @@ function onElementInserted(containerSelector, elementSelector, callback) {
             if (mutation.addedNodes.length) {
                 var elements = $(mutation.addedNodes).find(elementSelector);
                 for (var i = 0, len = elements.length; i < len; i++) {
-                    callback && callback(elements[i]);
+			if(callback){callback(elements[i]);}
+			else{console.log('Callback function does not exist/improperly formatted.');}
                 }
             }
         });
