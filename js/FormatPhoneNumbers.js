@@ -182,7 +182,7 @@ const classname = document.getElementsByClassName(id);
 
 //check pre-filled data
 function trigger_format(id,type){
-var event = new Event('input'); //create mock event to be triggeed on first load to check for pre-filled content
+var event = new Event('keyup'); //create mock event to be triggeed on first load to check for pre-filled content
 
 	if(type=='id'){
 		const inputElement = document.getElementById(id);
