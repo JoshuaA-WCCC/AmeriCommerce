@@ -152,6 +152,11 @@ var element = document.getElementsByClassName('LayoutContentInner')[0];
 
   var observer = new MutationObserver(function (mutations, observer) {
     formatPhoneNumber('AddressEditorPhoneTextbox','class');
+//trigger mock event to format any pre-filled data in added fields	  
+	  	for (var i = 0; i < classname.length; i++) { //for each matching field
+classname[i].dispatchEvent(event); //trigger onload to format any prefilled data
+	}
+	  
   });
   observer.observe(element, {
 	//  attributes: true,
