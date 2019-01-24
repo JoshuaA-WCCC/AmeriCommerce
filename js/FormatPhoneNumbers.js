@@ -51,7 +51,7 @@ function onElementInserted(containerSelector, elementSelector, callback) {
             if (mutation.addedNodes.length) {
                 var elements = $(mutation.addedNodes).find(elementSelector);
                 for (var i = 0, len = elements.length; i < len; i++) {
-                    callback(elements[i]);
+                    callback && callback(elements[i]);
                 }
             }
         });
@@ -191,6 +191,9 @@ var event = new Event('input'); //create mock event to be triggeed on first load
 
 //if any of the divs on the page are modified check if they contain a phone number class and add formatPhoneNumber listener to new phone number fields
 
-onElementInserted('.LayoutContentInner', '.AddressEditorPhoneTextbox', trigger_format(id,'class'));//listener for new phone number fields
+onElementInserted('.LayoutContentInner', '.AddressEditorPhoneTextbox', function(element) {
+trigger_format(id,'class');
+});//listener for new phone number fields
+
 formatPhoneNumber(id,'class');//initiate formatting of phone number fields
 trigger_format(id,'class');//trigger formatting any phone number fields that are pre-filled when the page loads.
