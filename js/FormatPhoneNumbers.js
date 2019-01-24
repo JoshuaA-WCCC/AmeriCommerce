@@ -1,5 +1,5 @@
 //modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
-//Version 1.0.4 (1-19-2019) 
+//Version 1.0.6 (1-23-2019) 
 
 /**********************************************************************************/
 // USAGE:
@@ -118,13 +118,18 @@ const formatToPhone = (event) => {
 	if(input.length > 9){target.value = `+${country} (${zip}) ${middle} - ${last}`;}
 	}
 };
+	
+var event = document.createEvent('Event'); //create mock event to be triggeed on first load to check for pre-filled content
+event.initEvent('input', true, true);
+
+
 
 if(type=='id'){
 const inputElement = document.getElementById(id);
 inputElement.addEventListener('keydown',enforceFormat);
 inputElement.addEventListener('keyup',formatToPhone);
 inputElement.addEventListener('input',formatToPhone);
-
+inputElement.dispatchEvent(event); //trigger onload to format any prefilled data
 }
 else if(type=='class'){
 const classname = document.getElementsByClassName(id);
@@ -133,6 +138,7 @@ const classname = document.getElementsByClassName(id);
 	classname[i].addEventListener('keyup',formatToPhone);
 	classname[i].addEventListener('input',formatToPhone);
 	classname[i].addEventListener('load',formatToPhone);
+	classname[i].dispatchEvent(event); //trigger onload to format any prefilled data
 	 }
 }
 	
