@@ -1,4 +1,4 @@
-//modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
+
 //Version 1.0.6 (1-23-2019) 
 
 /**********************************************************************************/
@@ -36,6 +36,37 @@
 // for the numbers to have a semblance of a consistent formatting.
 /**********************************************************************************/
 
+// MutationObserver function from https://stackoverflow.com/a/38517525 for detecting if an element with a particular 
+// id/class is added to the document and fire a function ONLY if it is found.
+//
+// Example Usage:
+// onElementInserted('body', '.myTargetElement', function(element) {
+//    console.log(element);
+// });
+
+function onElementInserted(containerSelector, elementSelector, callback) {
+
+    var onMutationsObserved = function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                var elements = $(mutation.addedNodes).find(elementSelector);
+                for (var i = 0, len = elements.length; i < len; i++) {
+                    callback(elements[i]);
+                }
+            }
+        });
+    };
+
+    var target = $(containerSelector)[0];
+    var config = { childList: true, subtree: true };
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+    var observer = new MutationObserver(onMutationsObserved);    
+    observer.observe(target, config);
+
+}
+
+
+//Below modified from https://jsfiddle.net/rafj3md0/ by JoshuaA JoshuaA@CougarPartsCatalog.com
 function formatPhoneNumber(id,type){ //id= element id or element class, type =id/class
 
 type = typeof type !== 'undefined' ? type : 'id';
@@ -135,34 +166,30 @@ const classname = document.getElementsByClassName(id);
 	 }
 }
 	
-} //end function
-const id = 'AddressEditorPhoneTextbox'; //the class or element id of the input field(s) containing phone numbers
-formatPhoneNumber(id,'class'); 
+} //end formatPhoneNumber function
+
+/***********************************************************************************/
+/* the class or element id of the input field(s) containing phone numbers */
+const id = 'AddressEditorPhoneTextbox'; 
+/***********************************************************************************/
 
 //check pre-filled data
+function trigger_format(id,type){
 var event = new Event('input'); //create mock event to be triggeed on first load to check for pre-filled content
-const classname = document.getElementsByClassName(id);//set the class of the phonenumber field to check onload
 
-	for (var i = 0; i < classname.length; i++) { //for each matching field
-classname[i].dispatchEvent(event); //trigger onload to format any prefilled data
+	if(type=='id'){
+		const inputElement = document.getElementById(id);
+		inputElement.dispatchEvent(event); //trigger onload to format any prefilled data
 	}
+	else if(type=='class'){
+	const classname = document.getElementsByClassName(id);
+		for (var i = 0; i < classname.length; i++) {
+			classname[i].dispatchEvent(event); //trigger onload to format any prefilled data
+	 	}
+	}	
+} //end trigger_format function
 
-//if any of the divs on the page are modified fire formatPhoneNumber to add the formatter to new phone number fields
-var element = document.getElementsByClassName('LayoutContentInner')[0];
+//if any of the divs on the page are modified check if they contain a phone number class and add formatPhoneNumber listener to new phone number fields
 
-  var observer = new MutationObserver(function (mutations, observer) {
-    formatPhoneNumber('AddressEditorPhoneTextbox','class');
-//trigger mock event to format any pre-filled data in added fields
-	  var event = new Event('input'); //create mock event to be triggeed on first load to check for pre-filled content
-const classname = document.getElementsByClassName(id);//set the class of the phonenumber field to check onload
-	  	for (var i = 0; i < classname.length; i++) { //for each matching field
-classname[i].dispatchEvent(event); //trigger onload to format any prefilled data
-	}
-	  
-  });
-  observer.observe(element, {
-	//  attributes: true,
-    childList: true,
-  //  characterData: true,
-    subtree: true
-  });
+onElementInserted('.LayoutContentInner', '.AddressEditorPhoneTextbox', trigger_format(id,'class'));//listener for new phone number fields
+trigger_format(id,'class');//trigger formatting any phone number fields that are pre-filled when the page loads.
