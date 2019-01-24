@@ -140,8 +140,7 @@ const id = 'AddressEditorPhoneTextbox'; //the class or element id of the input f
 formatPhoneNumber(id,'class'); 
 
 //check pre-filled data
-var event = document.createEvent('Event'); //create mock event to be triggeed on first load to check for pre-filled content
-event.initEvent('input', true, true);//set event variables
+var event = new Event('input'); //create mock event to be triggeed on first load to check for pre-filled content
 const inputElement = document.getElementsByClassName(id); //set the class of the phonenumber field to check onload
 inputElement.dispatchEvent(event); //trigger onload to format any prefilled data
 
