@@ -136,8 +136,8 @@ const classname = document.getElementsByClassName(id);
 }
 	
 } //end function
-
-formatPhoneNumber('AddressEditorPhoneTextbox','class'); 
+const id = 'AddressEditorPhoneTextbox'; //the class or element id of the input field(s) containing phone numbers
+formatPhoneNumber(id,'class'); 
 
 //check pre-filled data
 var event = document.createEvent('Event'); //create mock event to be triggeed on first load to check for pre-filled content
