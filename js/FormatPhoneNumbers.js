@@ -141,8 +141,11 @@ formatPhoneNumber(id,'class');
 
 //check pre-filled data
 var event = new Event('input'); //create mock event to be triggeed on first load to check for pre-filled content
-const inputElement = document.getElementsByClassName(id); //set the class of the phonenumber field to check onload
-inputElement.dispatchEvent(event); //trigger onload to format any prefilled data
+const classname = document.getElementsByClassName(id);//set the class of the phonenumber field to check onload
+
+	for (var i = 0; i < classname.length; i++) { //for each matching field
+classname[i].dispatchEvent(event); //trigger onload to format any prefilled data
+	}
 
 //if any of the divs on the page are modified fire formatPhoneNumber to add the formatter to new phone number fields
 var element = document.getElementsByClassName('LayoutContentInner')[0];
