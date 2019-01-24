@@ -36,6 +36,16 @@
 // for the numbers to have a semblance of a consistent formatting.
 /**********************************************************************************/
 
+
+/***********************************************************************************/
+/* the class or element id of the input field(s) containing phone numbers without period (.) or hash (#)*/
+const id = 'AddressEditorPhoneTextbox'; 
+
+//page section to listen to for dynamic additions, could be class [include period (.)], id [include hash (#)], or document.body
+const parent_id = '.LayoutContentInner'; 
+/***********************************************************************************/
+
+
 // MutationObserver function from https://stackoverflow.com/a/38517525 for detecting if an element with a particular 
 // id/class is added to the document and fire a function ONLY if it is found.
 //
@@ -168,10 +178,7 @@ const classname = document.getElementsByClassName(id);
 	
 } //end formatPhoneNumber function
 
-/***********************************************************************************/
-/* the class or element id of the input field(s) containing phone numbers */
-const id = 'AddressEditorPhoneTextbox'; 
-/***********************************************************************************/
+
 
 //check pre-filled data
 function trigger_format(id,type){
@@ -189,11 +196,12 @@ var event = new Event('input'); //create mock event to be triggeed on first load
 	}	
 } //end trigger_format function
 
-//if any of the divs on the page are modified check if they contain a phone number class and add formatPhoneNumber listener to new phone number fields
+formatPhoneNumber(id,'class');  //initiate formatting of phone number fields on key & input
+trigger_format(id,'class');  //trigger formatting any phone number fields that are pre-filled when the page loads.
 
-onElementInserted('.LayoutContentInner', '.AddressEditorPhoneTextbox', function(element) {
-trigger_format(id,'class');
-});//listener for new phone number fields
-
-formatPhoneNumber(id,'class');//initiate formatting of phone number fields
-trigger_format(id,'class');//trigger formatting any phone number fields that are pre-filled when the page loads.
+// if any of the divs on the page are modified check if they contain a phone number class and add formatPhoneNumber 
+// listener to new phone number fields
+onElementInserted(parent_id, '.'+id, function(element) {
+trigger_format(element.id,'id');
+    console.log(element.id);
+});
