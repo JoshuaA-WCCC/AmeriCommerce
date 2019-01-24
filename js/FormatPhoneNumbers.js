@@ -152,7 +152,9 @@ var element = document.getElementsByClassName('LayoutContentInner')[0];
 
   var observer = new MutationObserver(function (mutations, observer) {
     formatPhoneNumber('AddressEditorPhoneTextbox','class');
-//trigger mock event to format any pre-filled data in added fields	  
+//trigger mock event to format any pre-filled data in added fields
+	  var event = new Event('input'); //create mock event to be triggeed on first load to check for pre-filled content
+const classname = document.getElementsByClassName(id);//set the class of the phonenumber field to check onload
 	  	for (var i = 0; i < classname.length; i++) { //for each matching field
 classname[i].dispatchEvent(event); //trigger onload to format any prefilled data
 	}
