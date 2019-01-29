@@ -15,7 +15,7 @@ function getQueryParams(qs) {
     return params;
 }
 
-$.get('https://secure.cougarpartscatalog.com/store/sitemonitor.aspx',function(data){
+$.get('/store/sitemonitor.aspx',function(data){
 var site_status = getQueryParams(data);
 console.log("Site Version: "+site_status['Code Version']);
 });
