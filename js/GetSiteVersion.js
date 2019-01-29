@@ -1,5 +1,6 @@
 // get the results from /store/sitemonitor.aspx and parse into array and output the version of the site
 
+//function from https://stackoverflow.com/a/1099670
 function getQueryParams(qs) {
     qs = qs.split('+').join(' ');
 
