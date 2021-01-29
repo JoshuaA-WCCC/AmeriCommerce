@@ -23,7 +23,7 @@ $.ajax({
 });
 },
 select: function(event, ui) {
-
+console.log(JSON.stringify(ui));//show the results returned in the console
 		if(ui.item.type=="Category"){
 			var cat_id=ui.item.id;
 			window.location='/store/Category.aspx?catID='+cat_id;
