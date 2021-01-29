@@ -2,44 +2,43 @@
 
 //autocomplete function
 
-initiate_autocomplete(element){
+function initiate_autocomplete(element){
 
 element.autocomplete({
 
-  minLength: 2,
-  source: function(request, response) {
-  $.ajax({
-type: "GET",
-url: "/store/Autocomplete.aspx?q=" + request.term + "&o=" + this.element.attr('data-AutocompleteSettings'),
-contentType: "application/json; charset=utf-8",
-dataType: "json"
-}).done(function(data) {
-response($.map(data, function(item) {
-return {
-label: item.Name + " (" + item.Type + ")",
-value: item.Name
-};
-}));
+minLength: 2,
+source: function(request, response) {
+$.ajax({
+	type: "GET",
+	url: "/store/Autocomplete.aspx?q=" + request.term + "&o=" + this.element.attr('data-AutocompleteSettings'),
+	contentType: "application/json; charset=utf-8",
+	dataType: "json"
+	}).done(function(data) {
+		response($.map(data, function(item) {
+		return {
+	label: item.Name + " (" + item.Type + ")",
+	value: item.Name
+	};
+	}));
 });
 },
 select: function(event, ui) {
 
-if(ui.item.type=="Category"){
-var cat_id=ui.item.id;
-window.location='/store/Category.aspx?catID='+cat_id";
-}
+		if(ui.item.type=="Category"){
+			var cat_id=ui.item.id;
+			window.location='/store/Category.aspx?catID='+cat_id";
+		}
 
-else if(ui.item.type=="Product"){
-var item_id=ui.item.id;
-window.location='/store/ProductDetails.aspx?itemID='+item_id+; 
-}
+		else if(ui.item.type=="Product"){
+			var item_id=ui.item.id;
+			window.location='/store/ProductDetails.aspx?itemID='+item_id+; 
+		}
 
-else{
-event.target.value = ui.item.value;
-$("input[id$='" + event.target.getAttribute("data-button-id") + "'").click();
-
-}
-}
+		else{
+			event.target.value = ui.item.value;
+			$("input[id$='" + event.target.getAttribute("data-button-id") + "'").click();
+		}
+	}
 });
 
 }
