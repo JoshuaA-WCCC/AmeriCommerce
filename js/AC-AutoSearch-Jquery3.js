@@ -6,9 +6,9 @@ initiate_autocomplete(element){
 
 element.autocomplete({
 
- minLength: 2,
-source: function(request, response) {
-$.ajax({
+  minLength: 2,
+  source: function(request, response) {
+  $.ajax({
 type: "GET",
 url: "/store/Autocomplete.aspx?q=" + request.term + "&o=" + this.element.attr('data-AutocompleteSettings'),
 contentType: "application/json; charset=utf-8",
@@ -44,7 +44,7 @@ $("input[id$='" + event.target.getAttribute("data-button-id") + "'").click();
 
 }
 
-}
+
 
 function override_autosearch(){
   $('input:text.AutocompleteSearchBox').autocomplete( "destroy" ); //remove any previously defined autocomplete
