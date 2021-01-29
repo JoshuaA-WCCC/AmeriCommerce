@@ -26,12 +26,12 @@ select: function(event, ui) {
 
 		if(ui.item.type=="Category"){
 			var cat_id=ui.item.id;
-			window.location='/store/Category.aspx?catID='+cat_id";
+			window.location='/store/Category.aspx?catID='+cat_id;
 		}
 
 		else if(ui.item.type=="Product"){
 			var item_id=ui.item.id;
-			window.location='/store/ProductDetails.aspx?itemID='+item_id+; 
+			window.location='/store/ProductDetails.aspx?itemID='+item_id; 
 		}
 
 		else{
