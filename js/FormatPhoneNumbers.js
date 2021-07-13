@@ -143,7 +143,7 @@ const formatToPhone = (event) => {
 	const middle = input.slice(-7).substring(0,3);
 	const last = input.slice(-4);
 
-	if(input.length < 9){return;}
+	/*if(input.length < 9){return;}
 	else if(val.substring(0,2)=='+1' ||val.substring(0,3)!='+(1'){
 	const input = val.replace(/\D/g,''); 
 	const country_digits=input.length-10;
@@ -153,7 +153,8 @@ const formatToPhone = (event) => {
 	const last = input.slice(-4);
 	target.value = `+${country} (${zip}) ${middle} - ${last}`;}
 		
-	else if(val.substring(0,1)=='+' || val.replace(/\D/g,'').length>10){
+	else */
+	if(val.substring(0,1)=='+'){
 
 		return;
 		//removed formating to allow international customers format numbers as needed 
