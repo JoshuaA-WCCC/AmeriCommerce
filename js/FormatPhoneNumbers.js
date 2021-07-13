@@ -144,7 +144,7 @@ const formatToPhone = (event) => {
 	const last = input.slice(-4);
 
 	
-	if((val.substring(0,1)=='+' && val.substring(0,2)!='+1')||val.replace(/\D/g,'').length>10){
+	if((val.substring(0,1)=='+' && val.substring(0,2)!='+1')||(val.replace(/\D/g,'').length>10 && val.substring(0,2)!='+1')){
 
 		return;
 		//removed formating to allow international customers format numbers as needed 
@@ -157,6 +157,14 @@ const formatToPhone = (event) => {
 
 	if(input.length > 9){target.value = `+${country} (${zip}) ${middle} - ${last}`;}*/
 	}
+	else if(val.substring(0,2)!='+1'){
+		const input = val.replace(/\D/g,''); 
+	const country_digits=input.length-10;
+	const country = input.substring(0,country_digits);
+	const zip = input.slice(-10).substring(0,3);
+	const middle = input.slice(-7).substring(0,3);
+	const last = input.slice(-4);
+	target.value = `+${country} (${zip}) ${middle} - ${last}`;}
 	else if(input.length > 10){target.value = `1 (${zip}) ${middle} - ${last}`;}
 	else if(input.length > 9){target.value = `(${zip}) ${middle} - ${last}`;}
 	
