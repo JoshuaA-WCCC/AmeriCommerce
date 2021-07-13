@@ -157,7 +157,7 @@ const formatToPhone = (event) => {
 
 	if(input.length > 9){target.value = `+${country} (${zip}) ${middle} - ${last}`;}*/
 	}
-	else if(val.substring(0,2)!='+1'){
+	else if(val.substring(0,2)=='+1'){
 		const input = val.replace(/\D/g,''); 
 	const country_digits=input.length-10;
 	const country = input.substring(0,country_digits);
